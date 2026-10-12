@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nix Trive — Channel Operations</title>
+<style>
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       max-width:760px;margin:0 auto;padding:48px 24px;line-height:1.65;color:#1a1a1a;background:#fff}
+  h1{font-size:28px;margin:0 0 8px}
+  h2{font-size:19px;margin:32px 0 8px}
+  .sub{color:#666;margin:0 0 32px;font-size:15px}
+  code{background:#f4f4f5;padding:2px 6px;border-radius:4px;font-size:13px}
+  ul{padding-left:20px}
+  li{margin:6px 0}
+  .box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:16px 20px;margin:20px 0}
+  a{color:#2563eb}
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid #eee;color:#888;font-size:13px}
+</style>
+</head>
+<body>
+
+<h1>Nix Trive — Channel Operations</h1>
+<p class="sub">Internal automation tooling for managing owned YouTube channels.</p>
+
+<div class="box">
+<strong>What this application is</strong>
+<p style="margin:8px 0 0">A private automation pipeline that publishes videos to, and manages
+comments on, YouTube channels owned by the operator. It is not a public product and has no
+end users other than the account owner.</p>
+</div>
+
+<h2>Google API scopes requested</h2>
+<ul>
+  <li><code>youtube.upload</code> — publish videos to owned channels</li>
+  <li><code>youtube.force-ssl</code> — read and reply to comments on owned channels</li>
+</ul>
+<p>These scopes are used exclusively on channels owned by the operator. No other channel's
+data is read or modified.</p>
+
+<h2>Data handling</h2>
+<p>The application processes video files, titles, descriptions and comment text belonging to
+the operator's own channels. No personal data is sold, shared with third parties, or used for
+advertising. See the <a href="privacy.html">Privacy Policy</a> for detail.</p>
+
+<h2>Documents</h2>
+<ul>
+  <li><a href="privacy.html">Privacy Policy</a></li>
+  <li><a href="terms.html">Terms of Service</a></li>
+</ul>
+
+<h2>Contact</h2>
+<p>Questions about this application or its data handling can be raised as an issue on the
+associated public source repository.</p>
+
+<footer>Nix Trive · Channel Operations · Internal tooling</footer>
+
+</body>
+</html>
