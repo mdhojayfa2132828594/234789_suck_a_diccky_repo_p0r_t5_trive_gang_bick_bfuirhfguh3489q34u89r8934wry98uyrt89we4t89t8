@@ -40,13 +40,26 @@ def _post(url, payload, headers, timeout=180, retries=2):
 
 
 class Provider:
-    def __init__(self, name, kind, model, base, key, family):
-        self.name, self.kind, self.model = name, kind, model
+    def __init__(self, name, kind, models, base, key, family):
+        if isinstance(models, str):
+            models = [m.strip() for m in models.split(",") if m.strip()]
+        self.name, self.kind, self.models = name, kind, models
+        self.model = models[0]
         self.base, self.key, self.family = base, key, family
 
     def complete(self, prompt, system=None, max_tokens=6000, temperature=0.7):
+        last = None
+        for model in self.models:
+            try:
+                return self._complete(model, prompt, system, max_tokens, temperature)
+            except Exception as e:
+                last = f"{model}: {e}"
+                continue
+        raise RuntimeError(last)
+
+    def _complete(self, model, prompt, system=None, max_tokens=6000, temperature=0.7):
         if self.kind == "gemini":
-            url = f"{self.base}/models/{self.model}:generateContent?key={self.key}"
+            url = f"{self.base}/models/{model}:generateContent?key={self.key}"
             payload = {
                 "contents": [{"role": "user", "parts": [{"text": prompt}]}],
                 "generationConfig": {
@@ -65,10 +78,25 @@ class Provider:
             msgs.append({"role": "system", "content": system})
         msgs.append({"role": "user", "content": prompt})
         r = _post(url,
-                  {"model": self.model, "messages": msgs,
+                  {"model": model, "messages": msgs,
                    "temperature": temperature, "max_tokens": max_tokens},
                   {"Authorization": f"Bearer {self.key}"})
-        return r["choices"][0]["message"]["content"]
+
+        ch = (r.get("choices") or [{}])[0]
+        msg = ch.get("message") or {}
+
+        # Reasoning models (gpt-oss, R1-style) often return null `content`
+        # and put the actual output in `reasoning` / `reasoning_content`.
+        txt = (msg.get("content")
+               or msg.get("reasoning")
+               or msg.get("reasoning_content")
+               or ch.get("text")
+               or "")
+        txt = txt.strip()
+        if not txt:
+            raise RuntimeError(
+                f"empty completion (finish_reason={ch.get('finish_reason')})")
+        return txt
 
 
 def build_providers():
@@ -77,19 +105,20 @@ def build_providers():
     g = os.environ.get("GEMINI_API_KEY")
     if g:
         out.append(Provider("gemini", "gemini",
-                            os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"),
+                            os.environ.get("GEMINI_MODELS",
+                                           "gemini-3.8-flash,gemini-3.5-flash-lite,gemini-3.5-flash"),
                             "https://generativelanguage.googleapis.com/v1beta",
                             g, "google"))
     k = os.environ.get("GROQ_API_KEY")
     if k:
         out.append(Provider("groq", "openai",
-                            os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b"),
+                            os.environ.get("GROQ_MODELS", "openai/gpt-oss-120b,qwen/qwen3.8-27b,openai/gpt-oss-20b"),
                             "https://api.groq.com/openai/v1", k, "openai-oss"))
     k = os.environ.get("OPENROUTER_API_KEY")
     if k:
         out.append(Provider("openrouter", "openai",
-                            os.environ.get("OPENROUTER_MODEL",
-                                           "nvidia/nemotron-3-super-120b-a12b:free"),
+                            os.environ.get("OPENROUTER_MODELS",
+                                           "nvidia/nemotron-3-super-120b-a12b:free,openrouter/free"),
                             "https://openrouter.ai/api/v1", k, "nvidia"))
     return out
 
@@ -120,9 +149,10 @@ class Router:
             try:
                 t0 = time.time()
                 txt = p.complete(prompt, system, max_tokens, temperature)
+                model_used = p.model
                 dt = time.time() - t0
                 self.usage[p.name] = self.usage.get(p.name, 0) + 1
-                self.log.append(f"[{task}] {p.name}/{p.model} ok in {dt:.1f}s")
+                self.log.append(f"[{task}] {p.name}/{model_used} ok in {dt:.1f}s")
                 return txt, p
             except Exception as e:
                 errors.append(f"{p.name}: {e}")
