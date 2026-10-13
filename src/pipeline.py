@@ -119,9 +119,19 @@ def save_queue(q):
 
 
 def pick(q):
+    """First pending topic that is in scope (tier < 3).
+
+    Tier 3 = pharmacology / hormones / dosing. Those are NOT drafted; they are
+    marked needs-review and a human decides. That is the Tier-3 deferral.
+    """
     for t in q:
-        if t.get("status", "pending") == "pending":
-            return t
+        if t.get("status", "pending") != "pending":
+            continue
+        if int(t.get("tier", 1)) >= 3:
+            t["status"] = "needs-review"
+            t["result"] = "DEFERRED tier-3: requires human sign-off"
+            continue
+        return t
     return None
 
 
@@ -139,12 +149,25 @@ def main():
     q = load_queue()
     topic = pick(q)
     if not topic:
+        save_queue(q)          # persist any tier-3 deferrals
         print("No pending topics. Add more to topics/queue.json")
         return 2
 
     title = topic["title"]
     log.append(f"== TOPIC: {title}")
     print("Topic:", title)
+
+    # ---- 1b. pre-gate the TITLE before spending a generation call ----
+    pre = safety.evaluate(title, verify_citations=False)
+    if pre["verdict"] == "BLOCK":
+        print(f"pre-gate BLOCKED topic: {[b['rule'] for b in pre['blockers']]}")
+        topic["status"] = "rejected"
+        topic["result"] = "BLOCKED pre-gate: " + ", ".join(
+            b["rule"] for b in pre["blockers"])
+        topic["ran"] = stamp_str()
+        save_queue(q)
+        write_run_log(title, log + ["RESULT: BLOCKED at pre-gate"])
+        return 2
 
     # ---- 2. draft -------------------------------------------------------
     draft, drafter = router.call(
@@ -171,7 +194,11 @@ def main():
         max_tokens=2500,
         temperature=0.2,
     )
-    m = re.search(r"\{.*\}", vraw, re.S)
+    if not vraw or not vraw.strip():
+        log.append("verifier returned EMPTY - treating as revise")
+        vraw = ""
+    cleaned = re.sub(r"```(?:json)?", "", vraw or "")
+    m = re.search(r"\{.*\}", cleaned, re.S)
     try:
         verdict = json.loads(m.group(0)) if m else {"verdict": "revise",
                                                     "errors": [], "confidence": "low"}
@@ -195,7 +222,8 @@ def main():
         final = "APPROVED"
 
     # ---- 6. write --------------------------------------------------------
-    stamp = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+    stamp = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d")
+    def stamp_str(): return stamp
     slug = slugify(title)
     out = DRAFTS / f"{stamp}-{slug}.md"
 
