@@ -70,6 +70,37 @@ SENSITIVE = re.compile(
 
 DOI = re.compile(r"\b10\.\d{4,9}/[^\s\"'<>)\]]+", re.I)
 
+# Author-year citations. DOIs are not the only thing a model invents - it also
+# invents "Enebo et al., 1976". These get checked the same way.
+AUTHOR_YEAR = re.compile(
+    r"\b([A-Z][A-Za-z\-\u00e9']{2,})\s+"
+    r"(?:and\s+([A-Z][A-Za-z\-\u00e9']{2,})\s+)?"
+    r"(?:et\s+al\.?\s*,?\s*)?"
+    r"\(?((?:19|20)\d{2})\)?")
+
+# Naming a journal is the model's favourite way to fake authority once you ban
+# DOIs - "a 2019 PeerJ study found..." sounds sourced but cannot be checked.
+# If a venue is named, a resolvable DOI must accompany it.
+JOURNAL = re.compile(
+    r"\b(?:PeerJ|Nature|Science|Cell|JAMA|Lancet|BMJ|PLoS\s?ONE|PNAS|"
+    r"Journal of Biomechanics|Clinical Biomechanics|Spine|"
+    r"Journal of Applied Physiology|Journal of Physiology|"
+    r"Journal of Strength and Conditioning Research|"
+    r"Medicine & Science in Sports and Exercise|"
+    r"European Journal of Applied Physiology|Sports Medicine|"
+    r"Journal of Sport and Health Science|Gait & Posture)\b", re.I)
+
+# Fabricated first-person authority. The single fastest way to destroy a
+# channel is to have the narrator claim credentials they do not have.
+CREDENTIAL_CLAIM = re.compile(
+    r"\b(?:I (?:am|'m) (?:a|an) (?:doctor|physician|surgeon|physio(?:therapist)?|"
+    r"physical therapist|nutritionist|dietitian|researcher|scientist|"
+    r"orthop(?:a)?edic|clinician|MD|PT)|"
+    r"I\s+(?:work|spend|practis\w*|practic\w*)\b[^.\n]{0,40}?\s(?:in|as|at)\b|"
+    r"(?:my|our) (?:patients|clients|practice|clinic|lab|caseload)|"
+    r"I (?:have|'ve) (?:treated|seen|diagnosed|operated)|"
+    r"in my (?:clinical|medical|professional) (?:practice|experience|career))", re.I)
+
 
 # ---------------------------------------------------------------- citation check
 
@@ -96,14 +127,51 @@ def _crossref_ok(query_or_doi, timeout=25):
         return False
 
 
+def _author_year_ok(surname, year, timeout=25):
+    """Bibliographic search: does ANY real paper match surname+year?"""
+    try:
+        url = ("https://api.crossref.org/works?rows=1&query.author="
+               + urllib.parse.quote(surname)
+               + f"&filter=from-pub-date:{year}-01-01,until-pub-date:{year}-12-31")
+        req = urllib.request.Request(url, headers={"User-Agent": "channel-ops/1.0"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            data = json.loads(r.read().decode("utf-8", "ignore"))
+        return bool((data.get("message") or {}).get("items"))
+    except Exception:
+        return False
+
+
 def check_citations(text, do_verify=True):
-    """Pull DOIs + a SOURCES block and verify what can be verified."""
+    """Pull DOIs and author-year citations, verify both against CrossRef."""
     dois = list(dict.fromkeys(DOI.findall(text)))
     unverified, verified = [], []
     for d in dois:
         d = d.rstrip(".,;)")
         (verified if (do_verify and _crossref_ok(d)) else unverified).append(d)
-    return {"dois_found": len(dois), "verified": verified, "unverified": unverified}
+
+    seen, ay_unverified, ay_verified = set(), [], []
+    for surname, coauthor, year in AUTHOR_YEAR.findall(text):
+        if len(surname) < 4:
+            continue
+        key = (surname.lower(), year)
+        if key in seen:
+            continue
+        seen.add(key)
+        label = f"{surname} et al., {year}"
+        if not do_verify:
+            continue
+        (ay_verified if _author_year_ok(surname, year) else ay_unverified).append(label)
+
+    venues = list(dict.fromkeys(JOURNAL.findall(text)))
+    venue_unverified = []
+    if venues and not verified:
+        venue_unverified = venues   # named a journal but supplied no resolvable DOI
+
+    unverified = unverified + ay_unverified
+    return {"venues_named": venues,
+            "venues_unverifiable": venue_unverified,"dois_found": len(dois), "verified": verified, "unverified": unverified,
+            "author_year_verified": ay_verified,
+            "author_year_unverified": ay_unverified}
 
 
 # ---------------------------------------------------------------- the gate
@@ -117,6 +185,9 @@ BLOCKERS = [
      "Names a pharmaceutical or performance-enhancing substance."),
     ("disease-claim", DISEASE_CLAIM,
      "Claims to treat, heal or prevent a named disease."),
+    ("fabricated-credential", CREDENTIAL_CLAIM,
+     "Narrator claims professional credentials. Never invent authority - "
+     "the channel has no on-camera expert."),
     ("pregnancy", PREGNANCY,
      "Pregnancy/fertility/contraception content needs a qualified reviewer."),
     ("sensitive-topic", SENSITIVE,
@@ -163,6 +234,12 @@ def evaluate(text, verify_citations=True):
                               "reason": msg})
 
     cites = check_citations(text, do_verify=verify_citations)
+    if cites.get("venues_unverifiable"):
+        hits_flag.append({"rule": "named-venue-no-doi",
+                          "match": ", ".join(cites["venues_unverifiable"][:3]),
+                          "context": "Journal named but no resolvable DOI supplied",
+                          "reason": "Cite with a real DOI, or state the claim "
+                                    "without naming a journal."})
     if cites["unverified"]:
         hits_flag.append({"rule": "unverified-citation",
                           "match": ", ".join(cites["unverified"][:3]),
