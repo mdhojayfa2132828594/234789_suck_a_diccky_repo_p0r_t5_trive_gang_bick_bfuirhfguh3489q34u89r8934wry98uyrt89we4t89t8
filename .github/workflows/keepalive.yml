@@ -1,0 +1,31 @@
+name: keepalive
+
+# GitHub disables scheduled workflows after 60 days of repo inactivity.
+# This touches the repo on the 1st of every month so that never happens.
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Touch
+        run: |
+          mkdir -p state
+          echo "$(date -u)" >> state/keepalive.log
+          git config user.name  "keepalive"
+          git config user.email "keepalive@local"
+          git add state/keepalive.log
+          if git diff --cached --quiet; then
+            echo "no change"
+          else
+            git commit -m "keepalive"
+            git push
+          fi
