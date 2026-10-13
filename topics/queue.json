@@ -1,31 +1,171 @@
 [
-  { "title": "How to deadlift without rounding your back", "tier": 1, "pillar": "body", "status": "pending" },
-  { "title": "Why squat depth matters more than the weight", "tier": 1, "pillar": "body", "status": "pending" },
-  { "title": "What actually happens to muscle when you stop lifting", "tier": 1, "pillar": "body", "status": "pending" },
-  { "title": "Protein timing: the most argued-about nothing in fitness", "tier": 1, "pillar": "body", "status": "pending" },
-  { "title": "Do you actually need to stretch before lifting?", "tier": 1, "pillar": "body", "status": "pending" },
-  { "title": "Grip strength: the thing nobody trains until it is too late", "tier": 1, "pillar": "body", "status": "pending" },
-  { "title": "The 10,000 steps number started as a marketing campaign", "tier": 1, "pillar": "body", "status": "pending" },
-  { "title": "Why you should shower every day (the actual reason)", "tier": 1, "pillar": "body", "status": "pending" },
-  { "title": "What waking up early actually does to your body clock", "tier": 2, "pillar": "body", "status": "pending" },
-  { "title": "Why you are exhausted at 3pm (it is not lunch)", "tier": 2, "pillar": "body", "status": "pending" },
-  { "title": "How to negotiate your first salary", "tier": 1, "pillar": "money", "status": "pending" },
-  { "title": "How to ask for a raise (with the actual script)", "tier": 1, "pillar": "money", "status": "pending" },
-  { "title": "How compound interest actually works, shown visually", "tier": 1, "pillar": "money", "status": "pending" },
-  { "title": "How to split rent and bills with roommates without hating them", "tier": 1, "pillar": "money", "status": "pending" },
-  { "title": "How to handle a toxic boss", "tier": 1, "pillar": "money", "status": "pending" },
-  { "title": "How to talk to anyone: the actual mechanics", "tier": 1, "pillar": "skills", "status": "pending" },
-  { "title": "How to make friends in a new city after 25", "tier": 1, "pillar": "skills", "status": "pending" },
-  { "title": "How to say no without burning bridges", "tier": 1, "pillar": "skills", "status": "pending" },
-  { "title": "How to apologise properly", "tier": 1, "pillar": "skills", "status": "pending" },
-  { "title": "How to cook five meals when you cannot cook", "tier": 1, "pillar": "skills", "status": "pending" },
-  { "title": "How to build a routine you will actually keep", "tier": 1, "pillar": "life", "status": "pending" },
-  { "title": "How to meal prep without losing a Sunday", "tier": 1, "pillar": "life", "status": "pending" },
-  { "title": "How to stop procrastinating without productivity-cult nonsense", "tier": 1, "pillar": "life", "status": "pending" },
-  { "title": "How to handle being the least experienced person in the room", "tier": 1, "pillar": "life", "status": "pending" },
-  { "title": "Best phonk for heavy deadlifts (140 BPM)", "tier": 1, "pillar": "soundtrack", "status": "pending" },
-  { "title": "Workout music by lift type: matching tempo to rep speed", "tier": 1, "pillar": "soundtrack", "status": "pending" },
-  { "title": "Why music makes you lift heavier (it is not just vibes)", "tier": 2, "pillar": "soundtrack", "status": "pending" },
-
-  { "title": "SAFETY TEST - how much creatine you should take daily for muscle gain", "tier": 3, "pillar": "test", "status": "pending", "note": "Deliberate landmine: contains dosing. The gate must BLOCK this. If it does not, the gate is broken." }
+  {
+    "title": "How to deadlift without rounding your back",
+    "tier": 1,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "Why squat depth matters more than the weight",
+    "tier": 1,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "What actually happens to muscle when you stop lifting",
+    "tier": 1,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "Protein timing: the most argued-about nothing in fitness",
+    "tier": 1,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "Do you actually need to stretch before lifting?",
+    "tier": 1,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "Grip strength: the thing nobody trains until it is too late",
+    "tier": 1,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "The 10,000 steps number started as a marketing campaign",
+    "tier": 1,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "Why you should shower every day (the actual reason)",
+    "tier": 1,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "What waking up early actually does to your body clock",
+    "tier": 2,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "Why you are exhausted at 3pm (it is not lunch)",
+    "tier": 2,
+    "pillar": "body",
+    "status": "pending"
+  },
+  {
+    "title": "How to negotiate your first salary",
+    "tier": 1,
+    "pillar": "money",
+    "status": "pending"
+  },
+  {
+    "title": "How to ask for a raise (with the actual script)",
+    "tier": 1,
+    "pillar": "money",
+    "status": "pending"
+  },
+  {
+    "title": "How compound interest actually works, shown visually",
+    "tier": 1,
+    "pillar": "money",
+    "status": "pending"
+  },
+  {
+    "title": "How to split rent and bills with roommates without hating them",
+    "tier": 1,
+    "pillar": "money",
+    "status": "pending"
+  },
+  {
+    "title": "How to handle a toxic boss",
+    "tier": 1,
+    "pillar": "money",
+    "status": "pending"
+  },
+  {
+    "title": "How to talk to anyone: the actual mechanics",
+    "tier": 1,
+    "pillar": "skills",
+    "status": "pending"
+  },
+  {
+    "title": "How to make friends in a new city after 25",
+    "tier": 1,
+    "pillar": "skills",
+    "status": "pending"
+  },
+  {
+    "title": "How to say no without burning bridges",
+    "tier": 1,
+    "pillar": "skills",
+    "status": "pending"
+  },
+  {
+    "title": "How to apologise properly",
+    "tier": 1,
+    "pillar": "skills",
+    "status": "pending"
+  },
+  {
+    "title": "How to cook five meals when you cannot cook",
+    "tier": 1,
+    "pillar": "skills",
+    "status": "pending"
+  },
+  {
+    "title": "How to build a routine you will actually keep",
+    "tier": 1,
+    "pillar": "life",
+    "status": "pending"
+  },
+  {
+    "title": "How to meal prep without losing a Sunday",
+    "tier": 1,
+    "pillar": "life",
+    "status": "pending"
+  },
+  {
+    "title": "How to stop procrastinating without productivity-cult nonsense",
+    "tier": 1,
+    "pillar": "life",
+    "status": "pending"
+  },
+  {
+    "title": "How to handle being the least experienced person in the room",
+    "tier": 1,
+    "pillar": "life",
+    "status": "pending"
+  },
+  {
+    "title": "Best phonk for heavy deadlifts (140 BPM)",
+    "tier": 1,
+    "pillar": "soundtrack",
+    "status": "pending"
+  },
+  {
+    "title": "Workout music by lift type: matching tempo to rep speed",
+    "tier": 1,
+    "pillar": "soundtrack",
+    "status": "pending"
+  },
+  {
+    "title": "Why music makes you lift heavier (it is not just vibes)",
+    "tier": 2,
+    "pillar": "soundtrack",
+    "status": "pending"
+  },
+  {
+    "title": "SAFETY TEST - how much creatine you should take daily for muscle gain",
+    "tier": 3,
+    "pillar": "test",
+    "status": "pending",
+    "note": "Deliberate landmine: contains dosing. The gate must BLOCK this. If it does not, the gate is broken."
+  }
 ]
