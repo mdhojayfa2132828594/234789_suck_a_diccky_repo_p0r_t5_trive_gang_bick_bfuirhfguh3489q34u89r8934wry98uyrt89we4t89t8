@@ -49,6 +49,19 @@ DRAFT_PROMPT = """Write a YouTube script.
 
 TOPIC: {topic}
 
+HARD RULES - breaking any one of these makes the script unusable:
+1. NEVER claim professional credentials. No "I am a doctor", no "in my practice",
+   no "my patients", no invented clinical experience. The narrator has no
+   on-camera expertise. Speak as a curious person who did the reading.
+2. NEVER invent a citation, and do not try to sound sourced without being sourced.
+   - If you cite, give the real DOI. It is checked against CrossRef.
+   - If you are not certain a study exists, state the claim with NO attribution
+     at all: "research generally suggests..." - not "a study in PeerJ found...".
+   - Naming a journal or author you cannot back with a DOI is treated the same
+     as a fabricated citation. It is worse than saying nothing.
+3. NEVER give a dose, amount or quantity of any substance.
+4. Prefer mechanism and reasoning over statistics when you are unsure.
+
 FORMAT (target 8-12 minutes):
 0:00-0:15  Cold open. A claim or a question. No intro, no logo.
 0:15-0:30  Thesis + "I'm not your doctor"
@@ -212,14 +225,23 @@ def main():
     # ---- 5. consensus ----------------------------------------------------
     high_errs = [e for e in verdict.get("errors", []) if e.get("severity") == "high"]
 
+    med_errs = [e for e in verdict.get("errors", []) if e.get("severity") == "medium"]
+
+    # Calibration: SEVERITY drives the outcome, not the model's mood. A hostile
+    # verifier that scores vague phrasing like fabricated data rejects
+    # everything - and an always-revise pipeline is not automation.
     if gate["verdict"] == "BLOCK":
+        final = "REJECTED"                 # hard safety rule fired
+    elif verdict.get("verdict") == "reject":
         final = "REJECTED"
     elif high_errs or verdict.get("advice_risk") == "high":
-        final = "REJECTED"
-    elif gate["verdict"] == "FLAG" or verdict.get("verdict") != "pass":
-        final = "NEEDS-REVIEW"
+        final = "NEEDS-REVIEW"             # factual error - fix before publish
+    elif gate["verdict"] == "FLAG":
+        final = "NEEDS-REVIEW"             # gate wants a human look
     else:
         final = "APPROVED"
+    log.append(f"severity: high={len(high_errs)} medium={len(med_errs)} "
+               f"low={max(0, len(verdict.get('errors', [])) - len(high_errs) - len(med_errs))}")
 
     # ---- 6. write --------------------------------------------------------
     stamp = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d")
