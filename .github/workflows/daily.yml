@@ -1,0 +1,56 @@
+name: daily pipeline
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Override topic (optional)'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run pipeline
+        env:
+          GEMINI_API_KEY:     ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY:       ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GEMINI_MODEL:       gemini-2.5-flash
+          GROQ_MODEL:         openai/gpt-oss-120b
+          OPENROUTER_MODEL:   nvidia/nemotron-3-super-120b-a12b:free
+        run: |
+          python3 src/pipeline.py
+          echo "--- run log ---"
+          tail -40 state/run-log.md || true
+
+      - name: Commit outputs
+        run: |
+          git config user.name  "pipeline"
+          git config user.email "pipeline@local"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "pipeline: $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Upload drafts
+        uses: actions/upload-artifact@v4
+        with:
+          name: drafts-${{ github.run_number }}
+          path: drafts/
+          if-no-files-found: ignore
