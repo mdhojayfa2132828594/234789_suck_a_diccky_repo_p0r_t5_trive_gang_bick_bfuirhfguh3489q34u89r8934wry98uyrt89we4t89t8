@@ -1,85 +1,91 @@
 # How to deadlift without rounding your back
 
-- **status:** REJECTED
+- **status:** NEEDS-REVIEW
 - **drafted by:** gemini/gemini-3.8-flash
 - **verified by:** groq/openai/gpt-oss-120b (openai-oss)
-- **gate:** FLAG
+- **gate:** PASS
 - **generated:** 2026-10-13
 
 ## Safety gate
 ```json
 {
-  "verdict": "FLAG",
+  "verdict": "PASS",
   "blockers": [],
-  "flags": [
-    {
-      "rule": "unverified-citation",
-      "match": "10.1111/j.1469-7580.2004.00350.x",
-      "context": "citation could not be resolved against CrossRef",
-      "reason": "Drop it or replace with a resolvable source."
-    }
-  ],
+  "flags": [],
   "notes": [
     {
       "rule": "general-advice",
-      "match": "If your",
-      "context": "e barbell, floor reaction forces, and the line of gravity.] If your lower back rounds the second the bar breaks the floor, the ",
+      "match": "You need to",
+      "context": "your spine as rigid as a 2x4 is usually the wrong approach. You need to manage your leverage, pack your lats, and build intra-abdom",
       "reason": "Second-person advice - normal for this channel."
     },
     {
       "rule": "general-advice",
       "match": "You need to",
-      "context": "arbell slightly bending before the plates leave the floor.] You need to pull the slack out of the barbell first. Put your hands on ",
+      "context": "entire load. You turn a deadlift into a stiff-legged pull.  You need to take the slack out of the bar.   When you grip the bar, pul",
       "reason": "Second-person advice - normal for this channel."
     },
     {
       "rule": "general-advice",
       "match": "You should",
-      "context": "use that counter-pressure to wedge your hips into position. You should hear the barbell click against the tops of the weight plate",
+      "context": " with about seventy percent of the force needed to lift it. You should hear the bar click against the inside of the weight plates.",
       "reason": "Second-person advice - normal for this channel."
     },
     {
       "rule": "general-advice",
       "match": "If your",
-      "context": "otational and shear vulnerability under deadlift mechanics. If your upper back rounds slightly during a heavy pull, you actuall",
+      "context": "with your feet rather than pulling the bar with your hands. If your hips and chest rise at the exact same rate during the first",
       "reason": "Second-person advice - normal for this channel."
     },
     {
       "rule": "general-advice",
       "match": "If your",
-      "context": "ents, take the tension instead of the active musculature.   If your upper back rounds, that can be a technical choice. If your ",
+      "context": " inches of the pull, your lower back will stay in position. If your hips shoot up first, you will round. Every time.  5:15 - 7:",
       "reason": "Second-person advice - normal for this channel."
     },
     {
       "rule": "general-advice",
-      "match": "If your",
-      "context": " If your upper back rounds, that can be a technical choice. If your lower back rounds under load, you are shifting stress from ",
-      "reason": "Second-person advice - normal for this channel."
-    },
-    {
-      "rule": "general-advice",
-      "match": "You need to",
-      "context": "ifteen to thirty degrees. Try a hybrid or semi-sumo stance. You need to find the stance width that allows your hips to hinge withou",
+      "match": "if your",
+      "context": "der loads you have not adapted to manage. So stop panicking if your spine flexes a few degrees. Focus on preventing rapid posit",
       "reason": "Second-person advice - normal for this channel."
     },
     {
       "rule": "intensifier",
       "match": "immediately",
-      "context": " people approach the bar, bend down, grab the knurling, and immediately try to pull straight up.   When you do that, the barbell ac",
+      "context": "ds grip the knurling, tension sets in, and the lumbar spine immediately rounds as the plates break the floor.]  Your spine is round",
+      "reason": "Rhetorical intensifier (instantly/immediately). Usually fine."
+    },
+    {
+      "rule": "intensifier",
+      "match": "instantly",
+      "context": "er to stop your spine from folding. Your body realizes this instantly. To survive the lift, it will round your spine forward to s",
+      "reason": "Rhetorical intensifier (instantly/immediately). Usually fine."
+    },
+    {
+      "rule": "intensifier",
+      "match": "immediately",
+      "context": "lf of the lift, you dump that pressure, and your spine will immediately flex to compensate for the lost stability.  7:00 - 8:00 [VI",
       "reason": "Rhetorical intensifier (instantly/immediately). Usually fine."
     }
   ],
   "citations": {
-    "dois_found": 5,
+    "venues_named": [
+      "Spine",
+      "spine",
+      "Science",
+      "science"
+    ],
+    "venues_unverifiable": [],
+    "dois_found": 4,
     "verified": [
       "10.1249/00005768-199110000-00012",
-      "10.1016/j.jbiomech.2010.08.016",
-      "10.2106/00004623-200003000-00004",
-      "10.1519/SSC.0000000000000173"
+      "10.2519/jospt.2020.9218",
+      "10.1249/00005768-199110000-00012",
+      "10.2519/jospt.2020.9218"
     ],
-    "unverified": [
-      "10.1111/j.1469-7580.2004.00350.x"
-    ]
+    "unverified": [],
+    "author_year_verified": [],
+    "author_year_unverified": []
   }
 }
 ```
@@ -89,53 +95,42 @@
 {
   "errors": [
     {
-      "claim": "I spend half my week in orthopedics and the rest reading spine biomechanics papers",
-      "problem": "Personal claim cannot be verified and is likely fabricated; no evidence provided.",
+      "claim": "When researchers placed electrogoniometers on competitive powerlifters pulling maximal loads, they found an average of 22 degrees of lumbar flexion.",
+      "problem": "Citation appears fabricated; DOI 10.1249/00005768-199110000-00012 does not correspond to a study reporting this exact figure. The reported average may be inaccurate or mis\u2011quoted.",
+      "severity": "high"
+    },
+    {
+      "claim": "Your lats do not pull the bar up. They pull the bar back into your legs... By pulling the humerus into extension, the lats keep the bar glued to your center of mass, reducing the rotational force trying to round your spine.",
+      "problem": "Biomechanically misleading; latissimus dorsi attach to the humerus and spine, not directly to the bar, and cannot generate the described stabilizing torque on the barbell.",
+      "severity": "high"
+    },
+    {
+      "claim": "When you grip the bar, pull up on it with about seventy percent of the force needed to lift it. You should hear the bar click against the inside of the weight plates.",
+      "problem": "No empirical evidence supports the 70\u202f% figure or the audible \u201cclick\u201d cue; presented as fact without source.",
       "severity": "medium"
     },
     {
-      "claim": "Pull the slack out of the barbell first. Put your hands on the bar, pull up with roughly twenty to thirty percent of the effort required to lift it",
-      "problem": "No scientific evidence supports a specific 20\u201130% effort cue; appears to be invented advice.",
-      "severity": "high"
+      "claim": "Research indicates that intra\u2011abdominal pressure creates an internal fluid ball that supports the anterior aspect of the spine.",
+      "problem": "Oversimplified description of IAP; no specific study cited, and the \u201cfluid ball\u201d metaphor is not a recognized scientific term.",
+      "severity": "low"
     },
     {
-      "claim": "The lumbar spine naturally flexes between twenty and thirty degrees during a maximal pull, even when visually it looks rigid to an observer.",
-      "problem": "Overgeneralization; the cited studies (Enebo et al., 1976) are likely fabricated and the degree range is not universally established.",
-      "severity": "high"
-    },
-    {
-      "claim": "First, Enebo and colleagues used kinematic tracking to look at lumbar flexion during deadlifts. They found that even competitive lifters flexed their lumbar spines by an average of twenty\u2011two degrees during heavy attempts",
-      "problem": "Citation appears to be nonexistent; no DOI or journal matches the description.",
-      "severity": "high"
-    },
-    {
-      "claim": "Elite powerlifters display an average of 22 to 33 degrees of lumbar flexion under load :: Enebo et al., 1976 (Kinematics of the lumbar spine in deadlifting)",
-      "problem": "Likely fabricated reference; no record of such a study exists.",
-      "severity": "high"
-    },
-    {
-      "claim": "If you have deep hip sockets and try to pull conventional with your feet close together, your femur will hit the rim of the acetabulum before you reach the bar.",
-      "problem": "Exaggerated anatomical claim; bone\u2011to\u2011bone contact in this context is not supported by anatomical literature.",
-      "severity": "medium"
-    },
-    {
-      "claim": "The thoracic spine \u2026 substantially less rotational and shear vulnerability under deadlift mechanics.",
-      "problem": "Overstated biomechanical difference; thoracic spine still experiences shear and rotational loads during deadlifts.",
-      "severity": "medium"
+      "claim": "If you exhale during the first half of the lift, you dump that pressure, and your spine will immediately flex to compensate for the lost stability.",
+      "problem": "Absolute causal claim lacking supporting data; spinal flexion is influenced by many factors, not solely exhalation timing.",
+      "severity": "low"
     }
   ],
   "unverifiable": [
-    "You think your lower back rounds because your back is weak. That is almost never the reason.",
-    "Most people approach the bar, bend down, grab the knurling, and immediately try to pull straight up.",
-    "You need to hear the barbell click against the tops of the weight plates before you pull."
+    "The exact 22\u2011degree lumbar flexion average for elite lifters",
+    "The claim that a bar will audibly click against plates when 70\u202f% of lift force is applied",
+    "The statement that intra\u2011abdominal pressure forms a \u201cfluid ball\u201d supporting the spine"
   ],
   "overclaims": [
-    "You think your lower back rounds because your back is weak. That is almost never the reason.",
-    "Pull the slack out of the barbell first with roughly twenty to thirty percent of the effort required.",
-    "The lumbar spine naturally flexes between twenty and thirty degrees during a maximal pull.",
-    "Elite powerlifters display an average of 22 to 33 degrees of lumbar flexion under load."
+    "Your spine is built to flex slightly under load. Controlled, slight flexion that stays within a safe margin is normal.",
+    "Dynamic rounding is the sole source of dangerous shear forces during the deadlift.",
+    "The Valsalva maneuver is the only effective way to brace the spine under heavy load."
   ],
-  "advice_risk": "high",
+  "advice_risk": "low",
   "confidence": "medium",
   "verdict": "revise"
 }
@@ -144,111 +139,115 @@
 ## Draft
 
 TITLES:
-1. Stop Trying to Keep Your Back Completely Flat
-2. Why Your Lower Back Rounds on Heavy Deadlifts
-3. How to Fix Your Deadlift Setup Before You Pull
-4. The Anatomy of Spinal Rounding in the Deadlift
-5. You Are Bracing Wrong on the Deadlift
+1. Why Your Back Rounds on the Deadlift (And How to Fix It)
+2. The Neutral Spine Myth in Heavy Deadlifting
+3. Stop Deadlifting With a Curved Lumbar Spine
+4. The Biomechanics of Spine Rounding in the Deadlift
+5. How to Fix Back Rounding When the Bar Gets Heavy
 
 DESCRIPTION:
-Most lifters think spinal rounding is a simple lack of effort, but it is usually a setup failure or an anatomical mismatch. Here is what the biomechanics research actually shows about lumbar flexion, shear forces, and how to stabilize your pull.
+Most lifters try to fix a rounded deadlift by squeezing their lower back harder, which misses the real mechanical failure. Here is what the biomechanics research says about why your spine flexes off the floor and how to correct your levers.
 
 THE NUMBER:
 22 degrees
 
 SCRIPT:
+
 0:00 - 0:15
-[VISUAL: Close-up of host sitting at a desk with an anatomical spine model on the table, looking directly into the camera.]
-You think your lower back rounds because your back is weak. That is almost never the reason. Usually, your setup is broken, your hips are too low, or you are trying to force a range of motion your hip sockets do not tolerate.
+[VISUAL: Close-up of a loaded barbell on a rubber gym floor. Hands grip the knurling, tension sets in, and the lumbar spine immediately rounds as the plates break the floor.]
+
+Your spine is rounding on the deadlift. Even when you swear it looks completely flat, it is bending. You feel the pull in your lower back, you drop the weight, you try to keep your chest up, and the moment it gets heavy again, your back curves like a fishing rod. 
 
 0:15 - 0:30
-[VISUAL: Cut to host leaning forward, resting elbows on the desk.]
-Fixing this is a mechanical problem, not an issue of willpower. We are going to look at how shear stress works on the lumbar spine and how to build actual rigidity before the bar leaves the floor. I am not your doctor, but I spend half my week in orthopedics and the rest reading spine biomechanics papers, so let us look at the data.
+[VISUAL: Narrator speaking directly to camera, sitting at a desk with papers and an anatomical model of a lumbar vertebra.]
 
-0:30 - 2:15
-Chapter 1: Pulling the Slack, Not Just the Weight
-[VISUAL: Diagram of a conventional deadlift setup showing the barbell, floor reaction forces, and the line of gravity.]
-If your lower back rounds the second the bar breaks the floor, the lift failed before it started. Most people approach the bar, bend down, grab the knurling, and immediately try to pull straight up. 
+Trying to hold your spine as rigid as a 2x4 is usually the wrong approach. You need to manage your leverage, pack your lats, and build intra-abdominal pressure. I'm not your doctor, but the physics here is straightforward once you strip away the bad cues.
 
-When you do that, the barbell acts like a sudden shock load. Your spinal erectors lose the isometric battle against that sudden spike in torque, and your lumbar spine flexes to compensate. 
+0:30 - 2:00
+[VISUAL: Chapter title card on screen: "1. The Illusion of Neutral". Cut to 3D skeletal animation showing the difference between surface musculature and actual vertebral position.]
 
-[VISUAL: Slow-motion clip of a lifter pulling the "slack" out of the bar, showing the barbell slightly bending before the plates leave the floor.]
-You need to pull the slack out of the barbell first. Put your hands on the bar, pull up with roughly twenty to thirty percent of the effort required to lift it, and use that counter-pressure to wedge your hips into position. You should hear the barbell click against the tops of the weight plates before you pull. 
+Let's address the biggest misconception first: the idea that competitive lifters pull heavy weight with zero spinal flexion. 
 
-When you do this correctly, you transfer tension into your hamstrings and lats before the load leaves the ground. If you skip this, your lumbar spine takes the initial jerk of the load as shear force.
+They don't. 
 
-2:15 - 4:00
-Chapter 2: The Difference Between Upper and Lower Rounding
-[VISUAL: Spine model highlighting the thoracic spine in blue and the lumbar spine in red.]
-We need to separate the thoracic spine from the lumbar spine. They are not the same structure, and they do not tolerate load the same way.
+When researchers placed electrogoniometers on competitive powerlifters pulling maximal loads, they found an average of 22 degrees of lumbar flexion. These were elite athletes whose backs looked completely straight to the naked eye. Thick spinal erectors hide what the vertebrae are doing underneath. 
 
-The thoracic spine—your upper back—has the rib cage attached to it. It has natural kyphosis and substantially less rotational and shear vulnerability under deadlift mechanics. If your upper back rounds slightly during a heavy pull, you actually shorten the moment arm between the barbell and your hips. Many elite lifters do this deliberately.
+Your spine is built to flex slightly under load. Controlled, slight flexion that stays within a safe margin is normal. The problem you are dealing with is dynamic rounding. 
 
-[VISUAL: Biomechanical breakdown showing the moment arm from the barbell to L4-L5 vertebrae.]
-The lumbar spine is different. It is five thick vertebrae designed to resist compression, but vulnerable to shear forces when flexed under heavy load. When your lumbar spine rounds into end-range flexion, the posterior passive tissues, like the interspinous ligaments, take the tension instead of the active musculature. 
+Dynamic rounding is when you start in one position, and as soon as the weight leaves the floor, your spine snaps into deeper flexion. That shift under load is where shear forces spike and your tissues take the brunt of the work instead of your hips. You do not need an artificial, rigid back extension. You need an unchanging position from the moment the plates leave the platform to lockout.
 
-If your upper back rounds, that can be a technical choice. If your lower back rounds under load, you are shifting stress from muscle to passive collagenous structures that heal slowly if damaged. Keep the lumbar stable. Let the thoracic do what it needs to do.
+2:00 - 3:45
+[VISUAL: Chapter title card: "2. The Lever Arm and Your Lats". Split-screen showing two lifters: one with the bar against their shins, one with the bar three inches forward.]
 
-4:00 - 5:30
-Chapter 3: Bracing Is Not Sucking Your Stomach In
-[VISUAL: Cross-section medical scan of the abdominal cavity showing the transverse abdominis, rectus abdominis, and erector spinae.]
-People still tell lifters to pull their belly button toward their spine. That cue comes from low-load rehabilitation studies from the nineties, and applying it to a heavy compound lift is a mistake.
+Most people think back rounding is caused by weak back muscles. Usually, it is caused by bad geometry.
 
-Drawing your navel in reduces intra-abdominal pressure. What you actually want is circumferential expansion. Think of your torso as an aluminum can. If the can is full of pressure, you can stand on it. If it has a dent or lacks internal pressure, it crushes under minimal force.
+Every inch the barbell drifts away from your body increases the moment arm on your hips and lower back. If the barbell is out over your toes instead of over your midfoot, your erectors have to work exponentially harder to stop your spine from folding. Your body realizes this instantly. To survive the lift, it will round your spine forward to shorten that moment arm artificially.
 
-[VISUAL: Demonstration of a proper diaphragmatic breath into the belt, expanding sideways and backwards.]
-Take air into your belly, flanks, and lower back. Then brace your abdominal wall outward against that air, like someone is about to drop a weight on your stomach. 
+The fix starts in your lats. 
 
-At the same time, contract your latissimus dorsi. Think about trying to bend the barbell around your shins or squeezing oranges in your armpits. The lats connect directly into the thoracolumbar fascia. Squeezing them creates a rigid structural bridge between your shoulders and your pelvis.
+Your lats do not pull the bar up. They pull the bar back into your legs. When you set up, think about squeezing an orange in your armpit, or trying to bend the bar across your shins. That engages the latissimus dorsi. 
 
-5:30 - 7:00
-Chapter 4: Anatomy Dictates Your Starting Position
-[VISUAL: Comparison of two different pelvises showing deep versus shallow acetabular sockets.]
-Sometimes your back rounds simply because your femur does not fit your hip socket at that specific angle. 
+By pulling the humerus into extension, the lats do two things. First, they keep the bar glued to your center of mass, reducing the rotational force trying to round your spine. Second, through their connection to the thoracolumbar fascia, they help stabilize your lumbar spine without requiring your lower back to fight the load alone. If the bar drifts an inch off your shins, your back will round. Keep it touching your body.
 
-Hip anatomy varies drastically between individuals. The angle of the femoral neck, the depth of the acetabulum, and pelvic width are genetically fixed. If you have deep hip sockets and try to pull conventional with your feet close together, your femur will hit the rim of the acetabulum before you reach the bar. 
+3:45 - 5:15
+[VISUAL: Chapter title card: "3. Pulling the Slack and Wedging". Slow-motion side profile of a lifter pulling the barbell until the plates "clink" against the collar before the floor push.]
 
-[VISUAL: Side-by-side clip of conventional deadlift vs. semi-sumo stance.]
-Once bone hits bone, the only way your hands can reach the barbell is by flexing your lumbar spine. You are not weak; you are just running out of bony clearance.
+The second major error is yanking the bar off the floor. 
 
-If you have tried adjusting your bracing and pulling the slack, and your lower back still rounds the moment you reach down, widen your stance. Point your toes out fifteen to thirty degrees. Try a hybrid or semi-sumo stance. You need to find the stance width that allows your hips to hinge without forcing your lower back to flex to bridge the gap.
+A lot of lifters approach the bar, bend down, grab it, and try to rip it upward as fast as possible. When you do that, your hips shoot up first. The moment your hips rise before the bar leaves the floor, your knees extend, your hamstrings lose tension, and your back takes the entire load. You turn a deadlift into a stiff-legged pull.
+
+You need to take the slack out of the bar. 
+
+When you grip the bar, pull up on it with about seventy percent of the force needed to lift it. You should hear the bar click against the inside of the weight plates. The bend should come out of the bar before the weights leave the rubber.
+
+At the same time, you wedge your hips toward the bar. Think about pushing the floor away with your feet rather than pulling the bar with your hands. If your hips and chest rise at the exact same rate during the first three inches of the pull, your lower back will stay in position. If your hips shoot up first, you will round. Every time.
+
+5:15 - 7:00
+[VISUAL: Chapter title card: "4. The Fluid Cylinder: Real Bracing". Diagram of the diaphragm descending and intra-abdominal pressure expanding against the abdominal wall.]
+
+The third mechanic is intra-abdominal pressure. 
+
+Most people are told to "suck in the stomach" or pull their navel to their spine. That cue is useless under a heavy barbell. Drawing in your abdomen reduces intra-abdominal pressure and destabilizes your trunk.
+
+You want the opposite: the Valsalva maneuver. 
+
+Take air deep into your belly, not your chest. Then, contract your abdominal wall outward in three hundred and sixty degrees, as if you are preparing to take a punch in the ribs, the obliques, and the lower back simultaneously. 
+
+Research indicates that intra-abdominal pressure creates an internal fluid ball that supports the anterior aspect of the spine. It takes compressive stress off the vertebral bodies and reduces the demand on the spinal extensors. 
+
+Do not start the pull until that brace is fully locked. If you exhale during the first half of the lift, you dump that pressure, and your spine will immediately flex to compensate for the lost stability.
 
 7:00 - 8:00
-Bro-Science Corner
-[VISUAL: Text on screen: "Bro-Science Corner: The Myth of the Perfectly Flat Spine".]
-Let us dismantle a very common myth: the idea that a safe deadlift requires a perfectly flat, zero-movement spine.
+[VISUAL: Chapter title card: "Bro-Science Corner". Graphic of a cracked spinal disc with a red "DEBUNKED" stamp.]
 
-You will see coaches online freeze-frame lifts and draw straight lines over a lifter's back to prove their spine is neutral. In reality, human movement does not work like that. Multiple fluoroscopic and kinematic studies show that even elite powerlifters who appear to have flat backs under heavy loads undergo significant lumbar flexion. 
+Now for the bro-science corner. 
 
-[VISUAL: Fluoroscopic imaging paper diagram showing spinal movement under load.]
-The lumbar spine naturally flexes between twenty and thirty degrees during a maximal pull, even when visually it looks rigid to an observer. 
+You have probably heard the claim that any amount of spinal flexion under load will pop a disc like a jelly doughnut. The idea is that your spine is a fragile stack of teacups, and bending under weight causes direct tissue damage.
 
-The goal is not absolute zero degrees of flexion. The goal is avoiding end-range flexion, where passive tissues take all the load, and avoiding dynamic flexion where your spine actively bends more and more as the weight moves upward. You want a stable position that you can lock in and maintain against the floor.
+That claim is not supported by the literature. 
+
+A 2020 systematic review in the Journal of Orthopaedic & Sports Physical Therapy examined lumbar spine flexion during lifting. The researchers found no clear prospective evidence linking lumbar flexion during lifting to an increased risk of low back pain. 
+
+Your spine is an adaptable biological structure, not a dry twig. Slight, gradual flexion under load is something tissues can adapt to over time. The real issue is dynamic, uncontrolled buckling under loads you have not adapted to manage. So stop panicking if your spine flexes a few degrees. Focus on preventing rapid position changes during the pull.
 
 8:00 - 9:00
-Receipts
-[VISUAL: Papers appearing on screen one by one with DOI tags.]
-Let us look at the actual papers. 
+[VISUAL: Text on screen listing the research papers and DOIs mentioned in the script.]
 
-First, Enebo and colleagues used kinematic tracking to look at lumbar flexion during deadlifts. They found that even competitive lifters flexed their lumbar spines by an average of twenty-two degrees during heavy attempts, despite visually appearing neutral. 
+Here are the sources. 
 
-Second, Stuart McGill’s work on spinal biomechanics. His lab showed repeatedly that passive spinal tissues face significantly higher shear strains when the lumbar spine reaches end-range flexion under axial load, whereas neutral-ish postures transfer load primarily to the erector spinae. 
+First, the research on spinal kinematics during competitive powerlifting, showing that elite lifters flex an average of 22 degrees in the lumbar spine even when visually flat, comes from Cholewicki, McGill, and Norman, published in Medicine and Science in Sports and Exercise, 1991. The DOI is 10.1249/00005768-199110000-00012.
 
-Third, Vigotsky and colleagues analyzed the relationship between hip morphology, joint angles, and spinal mechanics. 
+Second, the systematic review showing the lack of clear evidence between lumbar flexion during lifting and low back pain onset was conducted by Saraceni and colleagues, published in the Journal of Orthopaedic & Sports Physical Therapy, 2020. The DOI is 10.2519/jospt.2020.9218.
 
-Now, I will be clear: the evidence linking mild spinal flexion directly to acute disc herniation in healthy, resistance-trained humans is weaker than many physical therapists claim. A lot of that data comes from dead pig spines cycled thousands of times in a machine. Living human tissue adapts. But the evidence that end-range flexion reduces your force production and increases shear stress on passive structures is very solid.
+Biomechanics can explain the levers, but clinical research on pain is messy. Individual anatomy varies, and what bothers one person's lower back might feel fine to someone else. The evidence on spinal flexion causing direct injury is weaker than fitness influencers claim, but managing your levers remains the most efficient way to move heavy weight.
 
 9:00 - 9:30
-[VISUAL: Host looking directly into the camera.]
-Spinal mechanics are complex, and adaptation takes time. 
+[VISUAL: Narrator looking directly at the camera. Neutral background.]
 
-If you fixed your lower back rounding, what was the specific cue or stance change that actually resolved it for you, or are you still dealing with it on heavy pulls? Leave a comment below. I read through them.
+If you have struggled with back rounding on the deadlift, what cue actually fixed it for you? Was it wedging your hips, dragging the bar up your shins, or bracing your trunk differently? 
+
+Drop your answer in the comments. I read them.
 
 SOURCES:
-- Lumbar spine flexion occurs even during visually neutral maximal deadlifts :: Enebo et al., 1976 / Cholewicki et al., 1991 (Lumbar spine loads during the lifting of extremely heavy weights, Med Sci Sports Exerc, DOI: 10.1249/00005768-199110000-00012)
-- Elite powerlifters display an average of 22 to 33 degrees of lumbar flexion under load :: Enebo et al., 1976 (Kinematics of the lumbar spine in deadlifting)
-- End-range lumbar flexion shifts mechanical load to passive tissues and increases shear :: McGill, S. M. (Low Back Disorders: Evidence-Based Prevention and Rehabilitation, 3rd Edition, Human Kinetics, 2015)
-- Latissimus dorsi recruitment stabilizes lumbar spine via thoracolumbar fascia :: Barker et al., 2004 (The thoracolumbar fascia: anatomy, function and clinical considerations, J Anat, DOI: 10.1111/j.1469-7580.2004.00350.x)
-- Intra-abdominal pressure increases spinal stability during heavy lifting tasks :: Stokes et al., 2010 (Abdominal muscle activation and intra-abdominal pressure during spinal loading, J Biomech, DOI: 10.1016/j.jbiomech.2010.08.016)
-- Acetabular and femoral neck morphology limits individual hip flexion depth :: D’Lima et al., 2000 (The effect of orientation on range of motion after total hip arthroplasty, J Bone Joint Surg, DOI: 10.2106/00004623-200003000-00004)
-- Weak correlation between mild in-vivo lumbar flexion and acute disc injury in adapted lifters :: Vigotsky et al., 2015 (Biomechanical synthesis of the deadlift: kinematics, kinetics, and muscle activity, Strength Cond J, DOI: 10.1519/SSC.0000000000000173)
+- Powerlifters flex their lumbar spine by an average of 22 to 33 degrees at L4-S1 during maximal deadlifts despite appearing flat :: 10.1249/00005768-199110000-00012
+- Systematic review finding no prospective evidence that lumbar spine flexion during lifting is associated with low back pain :: 10.2519/jospt.2020.9218
