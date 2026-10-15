@@ -25,17 +25,19 @@ STATE = ROOT / "state"
 
 PERSONA = os.environ.get("PERSONA", """
 You are the host of a YouTube self-improvement channel.
-You are a final-year medical student who works in a hospital and reads research
-for fun. You talk to ONE person, not an audience.
+You talk to ONE person, not an audience.
 
 Voice: dry, direct, occasionally blunt. Short sentences. Contractions.
-You enjoy dismantling bad health claims. You admit when evidence is weak.
+You enjoy dismantling claims that sound true but are not.
+You admit when evidence is weak - that is a feature, not a weakness.
 No hype, no exclamation marks, no "hey guys", no "smash that like button".
+
+You have NO professional credentials and you never claim any. You are a person
+who did the reading, not an authority. Do not invent expertise.
 """).strip()
 
 HARD_RULES = """
 HARD RULES - violating any of these makes the script unusable:
-- "I'm not your doctor" appears once, early, naturally - never as a legal disclaimer.
 - No dosing. Never state a quantity of any substance.
 - No diagnosis. No advice for an individual's specific body or symptom.
 - Never name a pharmaceutical or supplement as a recommendation.
@@ -64,7 +66,7 @@ HARD RULES - breaking any one of these makes the script unusable:
 
 FORMAT (target 8-12 minutes):
 0:00-0:15  Cold open. A claim or a question. No intro, no logo.
-0:15-0:30  Thesis + "I'm not your doctor"
+0:15-0:30  Thesis
 0:30-7:00  3-5 chapters, one idea each. Mark visuals as [VISUAL: ...]
 ~7:00      "Bro-science corner" - one claim dismantled
 8:00-9:00  Receipts - sources on screen
@@ -121,6 +123,61 @@ DRAFT:
 def slugify(s):
     s = re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
     return s[:60]
+
+
+def repair_citations(text, unverified):
+    """Remove every citation that failed verification, then drop the SOURCES
+    lines that leaned on it. A script with no source is recoverable;
+    a script with a fabricated source is not.
+
+    Only the citation itself is removed - never the sentence carrying it.
+    """
+    if not unverified:
+        return text, []
+    out = text
+    removed = []
+
+    for u in unverified:
+        u = (u or "").strip()
+        if not u:
+            continue
+        removed.append(u)
+
+        if u.startswith("10."):
+            out = out.replace(u, "")          # bare DOI
+            continue
+
+        m = re.match(r"^(.+?)\s+et al\.?,\s*(\d{4})$", u)
+        if not m:
+            out = out.replace(u, "")
+            continue
+
+        surname, year = m.group(1), m.group(2)
+        sn = re.escape(surname)
+        # the citation, in the shapes a model actually writes it
+        shapes = [
+            r"\(\s*" + sn + r"\s+et\s+al\.?,?\s*" + year + r"\s*\)",  # (Enebo et al., 1976)
+            r"\s*" + sn + r"\s+et\s+al\.?,?\s*" + year,               # Enebo et al., 1976
+            r"\(\s*" + sn + r"[,\s]+" + year + r"\s*\)",              # (Enebo, 1976)
+            r"\(\s*" + sn + r"\s*\(\s*" + year + r"\s*\)\s*\)",       # (Enebo (1976))
+        ]
+        for sh in shapes:
+            out = re.sub(sh, "", out)
+
+    # drop SOURCES lines that rested on anything unverifiable
+    kept = [l for l in out.splitlines() if not any(x in l for x in unverified)]
+    # and any that still name a venue with no DOI behind it
+    kept = [l for l in kept
+            if not (safety.JOURNAL.search(l) and not safety.DOI.search(l))]
+    # and any left with nothing after the arrow
+    kept = [l for l in kept if not re.match(r"^\s*-\s*.*::\s*$", l)]
+    out = "\n".join(kept)
+    out = re.sub(r"\n{3,}", "\n\n", out)
+    out = re.sub(r"\(\s*\)", "", out)
+    out = re.sub(r"\s+([,.;:])", r"\1", out)     # "shear , and" -> "shear, and"
+    out = re.sub(r"[ \t]{2,}", " ", out)
+    out = re.sub(r"\nSOURCES:\s*$", "", out)
+    return out, removed
 
 
 def load_queue():
@@ -194,6 +251,15 @@ def main():
 
     # ---- 3. deterministic gate ------------------------------------------
     gate = safety.evaluate(draft, verify_citations=True)
+
+    # 3b. auto-repair: strip unverifiable citations, then re-gate once.
+    #     A script with no source survives; one with a fake source does not.
+    bad = gate["citations"].get("unverified") or []
+    repaired = []
+    if bad:
+        draft, repaired = repair_citations(draft, bad)
+        gate = safety.evaluate(draft, verify_citations=True)
+        log.append(f"repaired: removed {len(repaired)} unverifiable citation(s)")
     log.append(f"gate: {gate['verdict']} "
                f"(blockers={len(gate['blockers'])}, flags={len(gate['flags'])})")
 
@@ -255,6 +321,7 @@ def main():
 - **drafted by:** {drafter.name}/{drafter.model}
 - **verified by:** {verifier.name}/{verifier.model} ({verifier.family})
 - **gate:** {gate['verdict']}
+- **citations stripped:** {len(repaired)} ({", ".join(repaired[:5]) if repaired else "none"})
 - **generated:** {stamp}
 
 ## Safety gate
