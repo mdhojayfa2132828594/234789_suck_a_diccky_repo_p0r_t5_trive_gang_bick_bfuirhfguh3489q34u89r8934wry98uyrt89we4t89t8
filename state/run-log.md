@@ -22,3 +22,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence low)
 - draft: `drafts/2026-10-14-what-actually-happens-to-muscle-when-you-stop-lifting.md`
+
+## 2026-10-15 — Protein timing: the most argued-about nothing in fitness
+
+- result: **NEEDS-REVIEW**
+- gate: FLAG · blockers 0 flags 1
+- verifier: revise (confidence high)
+- draft: `drafts/2026-10-15-protein-timing-the-most-argued-about-nothing-in-fitness.md`
