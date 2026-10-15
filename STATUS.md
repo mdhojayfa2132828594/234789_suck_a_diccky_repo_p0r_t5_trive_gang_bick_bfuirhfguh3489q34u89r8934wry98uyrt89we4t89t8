@@ -53,13 +53,39 @@ When I banned invented DOIs, the model **switched to inventing journal names**
 ("a study in the Journal of Biomechanics"). It complied with the letter of the rule
 and defeated its purpose. Both holes are now closed.
 
+## What changed after the repair pass
+
+Unverifiable citations are now **stripped automatically** and the script is re-gated.
+A script with no source survives; one with a fake source does not.
+
+| Metric | Before | After |
+|---|---|---|
+| Gate PASS | 2 of 5 | **5 of 6** |
+| Fake citations surviving into drafts | 1–5 per script | **0** |
+
 ## Current pass rate
 
-5 of 5 topics came out `NEEDS-REVIEW`. Severity breakdown: 1–5 **high**-severity
-errors per script. That is the system working correctly, not the system being broken —
-these are genuine errors, and the pipeline is refusing to pass them.
+6 of 6 topics come out `NEEDS-REVIEW`, not because of citations any more — those are
+now handled — but because the verifier finds **1–2 genuine high-severity factual
+errors in every script**. That is the real remaining bottleneck, and it is a property
+of the drafter, not of the pipeline.
 
-Zero scripts have reached `APPROVED` yet. Nobody should expect otherwise this early.
+Zero scripts have reached `APPROVED`. That is honest, not a failure: the system is
+catching real errors. Anyone claiming an LLM writes publishable factual scripts
+today without this kind of checking is not checking.
+
+## Channel framing (corrected)
+
+**This is not a medical channel.** It is general life advice. Consequences:
+
+- The "final-year medical student" persona was **removed** — it made the model
+  invent clinical authority, which the `fabricated-credential` blocker then caught.
+  The two were fighting each other.
+- The scripted "I'm not your doctor" line was **removed**.
+- Medical blockers (dosing, pharma, disease claims) stay on. Even a non-medical
+  channel should not tell people what to ingest.
+- GLP-1 / pharmacology stays **Tier 3 — deferred**. It needs a human-written
+  script. The pipeline will not draft it.
 
 ---
 
