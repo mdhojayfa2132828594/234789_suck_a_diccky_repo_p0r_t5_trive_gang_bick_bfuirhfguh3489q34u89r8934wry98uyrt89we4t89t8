@@ -8,3 +8,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-10-15-how-to-deadlift-without-rounding-your-back.md`
+
+## 2026-10-16 — Why squat depth matters more than the weight
+
+- result: **NEEDS-REVIEW**
+- gate: FLAG · blockers 0 flags 2
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-10-16-why-squat-depth-matters-more-than-the-weight.md`
