@@ -29,3 +29,10 @@ Every pipeline run is appended here.
 - gate: FLAG · blockers 0 flags 1
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-10-18-protein-timing-the-most-argued-about-nothing-in-fitness.md`
+
+## 2026-10-19 — Do you actually need to stretch before lifting?
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-10-19-do-you-actually-need-to-stretch-before-lifting.md`

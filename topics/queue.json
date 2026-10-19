@@ -39,7 +39,10 @@
     "title": "Do you actually need to stretch before lifting?",
     "tier": 1,
     "pillar": "body",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-10-19-do-you-actually-need-to-stretch-before-lifting.md",
+    "ran": "2026-10-19"
   },
   {
     "title": "Grip strength: the thing nobody trains until it is too late",
