@@ -48,7 +48,10 @@
     "title": "Grip strength: the thing nobody trains until it is too late",
     "tier": 1,
     "pillar": "body",
-    "status": "pending"
+    "status": "rejected",
+    "result": "REJECTED",
+    "draft": "2026-10-20-grip-strength-the-thing-nobody-trains-until-it-is-too-late.md",
+    "ran": "2026-10-20"
   },
   {
     "title": "The 10,000 steps number started as a marketing campaign",

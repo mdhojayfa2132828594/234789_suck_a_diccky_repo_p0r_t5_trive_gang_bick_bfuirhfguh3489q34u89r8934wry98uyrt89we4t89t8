@@ -36,3 +36,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-10-19-do-you-actually-need-to-stretch-before-lifting.md`
+
+## 2026-10-20 — Grip strength: the thing nobody trains until it is too late
+
+- result: **REJECTED**
+- gate: BLOCK · blockers 1 flags 0
+- verifier: revise (confidence high)
+- draft: `drafts/2026-10-20-grip-strength-the-thing-nobody-trains-until-it-is-too-late.md`
