@@ -43,3 +43,10 @@ Every pipeline run is appended here.
 - gate: BLOCK · blockers 1 flags 0
 - verifier: revise (confidence high)
 - draft: `drafts/2026-10-20-grip-strength-the-thing-nobody-trains-until-it-is-too-late.md`
+
+## 2026-10-21 — The 10,000 steps number started as a marketing campaign
+
+- result: **APPROVED**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence low)
+- draft: `drafts/2026-10-21-the-10-000-steps-number-started-as-a-marketing-campaign.md`
