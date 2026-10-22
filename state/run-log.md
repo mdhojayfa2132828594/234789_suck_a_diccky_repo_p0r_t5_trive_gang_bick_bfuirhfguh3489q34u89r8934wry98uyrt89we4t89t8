@@ -50,3 +50,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence low)
 - draft: `drafts/2026-10-21-the-10-000-steps-number-started-as-a-marketing-campaign.md`
+
+## 2026-10-22 — Why you should shower every day (the actual reason)
+
+- result: **NEEDS-REVIEW**
+- gate: FLAG · blockers 0 flags 1
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-10-22-why-you-should-shower-every-day-the-actual-reason.md`
