@@ -84,7 +84,10 @@
     "title": "Why you are exhausted at 3pm (it is not lunch)",
     "tier": 2,
     "pillar": "body",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-10-24-why-you-are-exhausted-at-3pm-it-is-not-lunch.md",
+    "ran": "2026-10-24"
   },
   {
     "title": "How to negotiate your first salary",

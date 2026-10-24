@@ -64,3 +64,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence high)
 - draft: `drafts/2026-10-23-what-waking-up-early-actually-does-to-your-body-clock.md`
+
+## 2026-10-24 — Why you are exhausted at 3pm (it is not lunch)
+
+- result: **NEEDS-REVIEW**
+- gate: FLAG · blockers 0 flags 1
+- verifier: revise (confidence low)
+- draft: `drafts/2026-10-24-why-you-are-exhausted-at-3pm-it-is-not-lunch.md`
