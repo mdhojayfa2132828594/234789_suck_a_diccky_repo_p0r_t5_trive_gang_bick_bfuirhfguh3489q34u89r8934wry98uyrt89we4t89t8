@@ -93,7 +93,10 @@
     "title": "How to negotiate your first salary",
     "tier": 1,
     "pillar": "money",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-10-25-how-to-negotiate-your-first-salary.md",
+    "ran": "2026-10-25"
   },
   {
     "title": "How to ask for a raise (with the actual script)",

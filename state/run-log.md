@@ -71,3 +71,10 @@ Every pipeline run is appended here.
 - gate: FLAG · blockers 0 flags 1
 - verifier: revise (confidence low)
 - draft: `drafts/2026-10-24-why-you-are-exhausted-at-3pm-it-is-not-lunch.md`
+
+## 2026-10-25 — How to negotiate your first salary
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-10-25-how-to-negotiate-your-first-salary.md`
