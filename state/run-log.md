@@ -78,3 +78,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-10-25-how-to-negotiate-your-first-salary.md`
+
+## 2026-10-26 — How to ask for a raise (with the actual script)
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-10-26-how-to-ask-for-a-raise-with-the-actual-script.md`

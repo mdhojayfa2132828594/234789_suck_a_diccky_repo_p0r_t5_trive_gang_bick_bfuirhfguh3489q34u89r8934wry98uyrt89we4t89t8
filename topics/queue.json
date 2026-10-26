@@ -102,7 +102,10 @@
     "title": "How to ask for a raise (with the actual script)",
     "tier": 1,
     "pillar": "money",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-10-26-how-to-ask-for-a-raise-with-the-actual-script.md",
+    "ran": "2026-10-26"
   },
   {
     "title": "How compound interest actually works, shown visually",
