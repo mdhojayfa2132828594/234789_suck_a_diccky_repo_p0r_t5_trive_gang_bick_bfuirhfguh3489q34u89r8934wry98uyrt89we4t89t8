@@ -85,3 +85,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-10-26-how-to-ask-for-a-raise-with-the-actual-script.md`
+
+## 2026-10-27 — How compound interest actually works, shown visually
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence high)
+- draft: `drafts/2026-10-27-how-compound-interest-actually-works-shown-visually.md`

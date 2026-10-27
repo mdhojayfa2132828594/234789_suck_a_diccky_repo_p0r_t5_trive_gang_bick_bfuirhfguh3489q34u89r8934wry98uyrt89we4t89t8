@@ -111,7 +111,10 @@
     "title": "How compound interest actually works, shown visually",
     "tier": 1,
     "pillar": "money",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-10-27-how-compound-interest-actually-works-shown-visually.md",
+    "ran": "2026-10-27"
   },
   {
     "title": "How to split rent and bills with roommates without hating them",
