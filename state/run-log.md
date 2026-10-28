@@ -92,3 +92,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence high)
 - draft: `drafts/2026-10-27-how-compound-interest-actually-works-shown-visually.md`
+
+## 2026-10-28 — How to split rent and bills with roommates without hating them
+
+- result: **NEEDS-REVIEW**
+- gate: FLAG · blockers 0 flags 1
+- verifier: revise (confidence high)
+- draft: `drafts/2026-10-28-how-to-split-rent-and-bills-with-roommates-without-hating-th.md`
