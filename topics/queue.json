@@ -129,7 +129,10 @@
     "title": "How to handle a toxic boss",
     "tier": 1,
     "pillar": "money",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-10-29-how-to-handle-a-toxic-boss.md",
+    "ran": "2026-10-29"
   },
   {
     "title": "How to talk to anyone: the actual mechanics",

@@ -99,3 +99,10 @@ Every pipeline run is appended here.
 - gate: FLAG · blockers 0 flags 1
 - verifier: revise (confidence high)
 - draft: `drafts/2026-10-28-how-to-split-rent-and-bills-with-roommates-without-hating-th.md`
+
+## 2026-10-29 — How to handle a toxic boss
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence low)
+- draft: `drafts/2026-10-29-how-to-handle-a-toxic-boss.md`
