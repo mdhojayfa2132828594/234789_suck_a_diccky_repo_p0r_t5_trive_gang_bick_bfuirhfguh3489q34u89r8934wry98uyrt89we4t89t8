@@ -106,3 +106,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence low)
 - draft: `drafts/2026-10-29-how-to-handle-a-toxic-boss.md`
+
+## 2026-10-30 — How to talk to anyone: the actual mechanics
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence high)
+- draft: `drafts/2026-10-30-how-to-talk-to-anyone-the-actual-mechanics.md`

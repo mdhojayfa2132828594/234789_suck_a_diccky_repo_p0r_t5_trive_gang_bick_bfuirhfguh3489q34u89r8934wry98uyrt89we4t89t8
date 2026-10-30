@@ -138,7 +138,10 @@
     "title": "How to talk to anyone: the actual mechanics",
     "tier": 1,
     "pillar": "skills",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-10-30-how-to-talk-to-anyone-the-actual-mechanics.md",
+    "ran": "2026-10-30"
   },
   {
     "title": "How to make friends in a new city after 25",
