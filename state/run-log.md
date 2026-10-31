@@ -113,3 +113,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence high)
 - draft: `drafts/2026-10-30-how-to-talk-to-anyone-the-actual-mechanics.md`
+
+## 2026-10-31 — How to make friends in a new city after 25
+
+- result: **APPROVED**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence low)
+- draft: `drafts/2026-10-31-how-to-make-friends-in-a-new-city-after-25.md`
