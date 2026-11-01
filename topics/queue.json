@@ -156,7 +156,10 @@
     "title": "How to say no without burning bridges",
     "tier": 1,
     "pillar": "skills",
-    "status": "pending"
+    "status": "rejected",
+    "result": "REJECTED",
+    "draft": "2026-11-01-how-to-say-no-without-burning-bridges.md",
+    "ran": "2026-11-01"
   },
   {
     "title": "How to apologise properly",

@@ -120,3 +120,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence low)
 - draft: `drafts/2026-10-31-how-to-make-friends-in-a-new-city-after-25.md`
+
+## 2026-11-01 — How to say no without burning bridges
+
+- result: **REJECTED**
+- gate: PASS · blockers 0 flags 0
+- verifier: reject (confidence high)
+- draft: `drafts/2026-11-01-how-to-say-no-without-burning-bridges.md`
