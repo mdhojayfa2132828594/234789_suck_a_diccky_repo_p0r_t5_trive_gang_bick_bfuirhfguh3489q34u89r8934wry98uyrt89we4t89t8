@@ -127,3 +127,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: reject (confidence high)
 - draft: `drafts/2026-11-01-how-to-say-no-without-burning-bridges.md`
+
+## 2026-11-02 — How to apologise properly
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-11-02-how-to-apologise-properly.md`

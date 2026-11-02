@@ -165,7 +165,10 @@
     "title": "How to apologise properly",
     "tier": 1,
     "pillar": "skills",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-11-02-how-to-apologise-properly.md",
+    "ran": "2026-11-02"
   },
   {
     "title": "How to cook five meals when you cannot cook",
