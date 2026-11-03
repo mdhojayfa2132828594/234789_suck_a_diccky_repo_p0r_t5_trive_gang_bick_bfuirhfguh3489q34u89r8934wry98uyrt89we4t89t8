@@ -174,7 +174,10 @@
     "title": "How to cook five meals when you cannot cook",
     "tier": 1,
     "pillar": "skills",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-11-03-how-to-cook-five-meals-when-you-cannot-cook.md",
+    "ran": "2026-11-03"
   },
   {
     "title": "How to build a routine you will actually keep",
