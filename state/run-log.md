@@ -141,3 +141,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-11-03-how-to-cook-five-meals-when-you-cannot-cook.md`
+
+## 2026-11-04 — How to build a routine you will actually keep
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-11-04-how-to-build-a-routine-you-will-actually-keep.md`
