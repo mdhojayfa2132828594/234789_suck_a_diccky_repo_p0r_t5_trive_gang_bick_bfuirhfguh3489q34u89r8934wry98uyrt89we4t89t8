@@ -148,3 +148,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-11-04-how-to-build-a-routine-you-will-actually-keep.md`
+
+## 2026-11-05 — How to meal prep without losing a Sunday
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence high)
+- draft: `drafts/2026-11-05-how-to-meal-prep-without-losing-a-sunday.md`
