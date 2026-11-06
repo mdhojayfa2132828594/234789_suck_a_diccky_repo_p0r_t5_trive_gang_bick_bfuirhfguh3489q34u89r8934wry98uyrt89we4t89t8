@@ -155,3 +155,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence high)
 - draft: `drafts/2026-11-05-how-to-meal-prep-without-losing-a-sunday.md`
+
+## 2026-11-06 — How to stop procrastinating without productivity-cult nonsense
+
+- result: **NEEDS-REVIEW**
+- gate: FLAG · blockers 0 flags 1
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-11-06-how-to-stop-procrastinating-without-productivity-cult-nonsen.md`
