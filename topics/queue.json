@@ -210,7 +210,10 @@
     "title": "How to handle being the least experienced person in the room",
     "tier": 1,
     "pillar": "life",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-11-07-how-to-handle-being-the-least-experienced-person-in-the-room.md",
+    "ran": "2026-11-07"
   },
   {
     "title": "Best phonk for heavy deadlifts (140 BPM)",

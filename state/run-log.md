@@ -162,3 +162,10 @@ Every pipeline run is appended here.
 - gate: FLAG · blockers 0 flags 1
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-11-06-how-to-stop-procrastinating-without-productivity-cult-nonsen.md`
+
+## 2026-11-07 — How to handle being the least experienced person in the room
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-11-07-how-to-handle-being-the-least-experienced-person-in-the-room.md`
