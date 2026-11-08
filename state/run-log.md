@@ -169,3 +169,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-11-07-how-to-handle-being-the-least-experienced-person-in-the-room.md`
+
+## 2026-11-08 — Best phonk for heavy deadlifts (140 BPM)
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-11-08-best-phonk-for-heavy-deadlifts-140-bpm.md`

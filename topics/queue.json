@@ -219,7 +219,10 @@
     "title": "Best phonk for heavy deadlifts (140 BPM)",
     "tier": 1,
     "pillar": "soundtrack",
-    "status": "pending"
+    "status": "review",
+    "result": "NEEDS-REVIEW",
+    "draft": "2026-11-08-best-phonk-for-heavy-deadlifts-140-bpm.md",
+    "ran": "2026-11-08"
   },
   {
     "title": "Workout music by lift type: matching tempo to rep speed",
