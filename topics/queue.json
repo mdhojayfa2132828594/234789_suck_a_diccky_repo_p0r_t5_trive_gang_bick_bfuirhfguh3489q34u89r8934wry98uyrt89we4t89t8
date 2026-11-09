@@ -228,7 +228,10 @@
     "title": "Workout music by lift type: matching tempo to rep speed",
     "tier": 1,
     "pillar": "soundtrack",
-    "status": "pending"
+    "status": "rejected",
+    "result": "REJECTED",
+    "draft": "2026-11-09-workout-music-by-lift-type-matching-tempo-to-rep-speed.md",
+    "ran": "2026-11-09"
   },
   {
     "title": "Why music makes you lift heavier (it is not just vibes)",

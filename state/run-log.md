@@ -176,3 +176,10 @@ Every pipeline run is appended here.
 - gate: PASS · blockers 0 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-11-08-best-phonk-for-heavy-deadlifts-140-bpm.md`
+
+## 2026-11-09 — Workout music by lift type: matching tempo to rep speed
+
+- result: **REJECTED**
+- gate: BLOCK · blockers 1 flags 0
+- verifier: revise (confidence medium)
+- draft: `drafts/2026-11-09-workout-music-by-lift-type-matching-tempo-to-rep-speed.md`
