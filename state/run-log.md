@@ -183,3 +183,10 @@ Every pipeline run is appended here.
 - gate: BLOCK · blockers 1 flags 0
 - verifier: revise (confidence medium)
 - draft: `drafts/2026-11-09-workout-music-by-lift-type-matching-tempo-to-rep-speed.md`
+
+## 2026-11-10 — Why music makes you lift heavier (it is not just vibes)
+
+- result: **NEEDS-REVIEW**
+- gate: PASS · blockers 0 flags 0
+- verifier: revise (confidence high)
+- draft: `drafts/2026-11-10-why-music-makes-you-lift-heavier-it-is-not-just-vibes.md`
